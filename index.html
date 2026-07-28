@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temma Dev Apps サポートページ</title>
+  <meta name="description" content="Temma Dev Appsが提供するアプリのサポート・お問い合わせページです。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a2430;
+      --ink-soft: #3d4a5c;
+      --mist: #e8eef4;
+      --paper: #f3f6f9;
+      --sea: #2f6f7e;
+      --sea-deep: #1f4f5a;
+      --foam: #ffffff;
+      --line: rgba(26, 36, 48, 0.12);
+      --shadow: 0 18px 50px rgba(31, 79, 90, 0.08);
+      --radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      background:
+        radial-gradient(1200px 700px at 12% -10%, rgba(47, 111, 126, 0.18), transparent 55%),
+        radial-gradient(900px 600px at 100% 0%, rgba(232, 238, 244, 0.95), transparent 45%),
+        linear-gradient(165deg, #dfe8ef 0%, var(--paper) 42%, #eef3f6 100%);
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(rgba(26, 36, 48, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 36, 48, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    a {
+      color: var(--sea-deep);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--sea);
+    }
+
+    .wrap {
+      position: relative;
+      width: min(720px, calc(100% - 2.5rem));
+      margin: 0 auto;
+      padding: 4.5rem 0 3.5rem;
+    }
+
+    .brand-mark {
+      display: inline-block;
+      font-family: "Shippori Mincho", serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sea);
+      opacity: 0;
+      animation: rise 0.8s ease forwards 0.1s;
+    }
+
+    h1 {
+      margin-top: 1.1rem;
+      font-family: "Shippori Mincho", serif;
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      animation: rise 0.9s ease forwards 0.22s;
+    }
+
+    .lead {
+      margin-top: 1.25rem;
+      max-width: 34em;
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      opacity: 0;
+      animation: rise 0.9s ease forwards 0.36s;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: rise 0.9s ease forwards 0.48s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.85rem;
+      padding: 0.7rem 1.25rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--sea-deep);
+      color: var(--foam);
+    }
+
+    .btn-primary:hover {
+      background: var(--sea);
+      color: var(--foam);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.55);
+      border-color: var(--line);
+      color: var(--ink);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-ghost:hover {
+      background: var(--foam);
+      color: var(--ink);
+    }
+
+    section {
+      margin-top: 3.75rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      animation: rise 0.9s ease forwards 0.62s;
+    }
+
+    section h2 {
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    section p {
+      margin-top: 0.75rem;
+      color: var(--ink-soft);
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-list li {
+      display: grid;
+      gap: 0.25rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-list li:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--sea);
+    }
+
+    .value {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink);
+      word-break: break-all;
+    }
+
+    .value a {
+      text-decoration: none;
+      border-bottom: 1px solid rgba(31, 79, 90, 0.28);
+    }
+
+    .value a:hover {
+      border-bottom-color: var(--sea);
+    }
+
+    .note {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .app-list {
+      list-style: none;
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 0;
+    }
+
+    .app-list > li {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 1.1rem 1.25rem;
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .app-list > li:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .app-icon {
+      display: block;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(31, 79, 90, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .app-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(31, 79, 90, 0.16);
+    }
+
+    .app-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .app-body {
+      min-width: 0;
+    }
+
+    .app-body h3 {
+      font-family: "Shippori Mincho", serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.35;
+    }
+
+    .app-body .desc {
+      margin-top: 0.4rem;
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .app-links {
+      margin-top: 0.7rem;
+      font-size: 0.9rem;
+    }
+
+    .app-links a {
+      text-decoration: none;
+      border-bottom: 1px solid rgba(31, 79, 90, 0.28);
+    }
+
+    .app-links a:hover {
+      border-bottom-color: var(--sea);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      opacity: 0;
+      animation: rise 0.9s ease forwards 0.75s;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .brand-mark,
+      h1,
+      .lead,
+      .cta-row,
+      section,
+      footer {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="brand-mark">APP SUPPORT</p>
+    <h1>Temma Dev Apps</h1>
+    <p class="lead">
+      アプリのサポートページです。アプリに関するお問い合わせ、プライバシーポリシー、その他の案内はこちらからご確認ください。
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact">お問い合わせ</a>
+      <a class="btn btn-ghost" href="#apps">アプリ一覧</a>
+    </div>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">お問い合わせ</h2>
+      <p>アプリのご利用に関するご質問・ご報告は、下記までご連絡ください。通常、数営業日以内にご返信します。</p>
+
+      <ul class="contact-list">
+        <li>
+          <span class="label">EMAIL</span>
+          <span class="value"><a href="mailto:tianma922@gmail.com">tianma922@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="label">X (TWITTER)</span>
+          <span class="value"><a href="https://x.com/Temmin040302" target="_blank" rel="noopener noreferrer">@Temmin040302</a></span>
+        </li>
+      </ul>
+
+    </section>
+
+    <section id="apps" aria-labelledby="apps-heading">
+      <h2 id="apps-heading">iOSアプリ一覧</h2>
+      <p>現在公開中のiOSアプリです。アイコンからAppleストアページへ、各項目下のリンクからプライバシーポリシーへ移動できます。</p>
+
+      <ul class="app-list">
+        <li>
+          <!-- TODO: ストアURLを正式なものに差し替え -->
+          <a class="app-icon" href="https://apps.apple.com/app/id0000000000" target="_blank" rel="noopener noreferrer" aria-label="Warble を App Store で開く">
+            <img src="./Warble/IconDefault.png" alt="Warble のアイコン" width="72" height="72" />
+          </a>
+          <div class="app-body">
+            <h3>Warble</h3>
+            <p class="desc">Apple Music と連携し、機能を追加するミュージックアプリです。</p>
+            <p class="app-links">
+              <a href="./Warble/privacy_policy.html">プライバシーポリシー</a>
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <!-- TODO: ストアURLを正式なものに差し替え -->
+          <a class="app-icon" href="https://apps.apple.com/app/id0000000001" target="_blank" rel="noopener noreferrer" aria-label="同期歌詞メーカー for Warble を App Store で開く">
+            <img src="./LRCMaker/IconDefault.png" alt="同期歌詞メーカー for Warble のアイコン" width="72" height="72" />
+          </a>
+          <div class="app-body">
+            <h3>同期歌詞メーカー for Warble</h3>
+            <p class="desc">楽曲に合わせて流れる同期歌詞を作成・編集できるアプリです。</p>
+            <p class="app-links">
+              <a href="./LRCMaker/privacy_policy.html">プライバシーポリシー</a>
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a class="app-icon" href="https://apps.apple.com/app/id6754158071" target="_blank" rel="noopener noreferrer" aria-label="ReadMaster を App Store で開く">
+            <img src="./ReadMaster/IconDefault.png" alt="ReadMaster のアイコン" width="72" height="72" />
+          </a>
+          <div class="app-body">
+            <h3>ReadMaster - 毎日の読書を管理</h3>
+            <p class="desc">読書習慣と読了記録をまとめて管理できるアプリです。</p>
+            <p class="app-links">
+              <a href="./ReadMaster/privacy_policy.html">プライバシーポリシー</a>
+            </p>
+          </div>
+        </li>
+
+        <li>
+          <a class="app-icon" href="https://apps.apple.com/jp/app/id6759031041" target="_blank" rel="noopener noreferrer" aria-label="Unusual Knight Tour を App Store で開く">
+            <img src="./Unusual%20Knight%20Tour/IconDefault.png" alt="Unusual Knight Tour のアイコン" width="72" height="72" />
+          </a>
+          <div class="app-body">
+            <h3>Unusual Knight Tour - 戦略パズル</h3>
+            <p class="desc">チェスの「ナイトツアーパズル」を題材にしたパズルゲームです。</p>
+            <p class="app-links">
+              <a href="./Unusual%20Knight%20Tour/privacy_policy.html">プライバシーポリシー</a>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Suzuki Temma. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
