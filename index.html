@@ -272,12 +272,42 @@
       min-width: 0;
     }
 
+    .app-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.45rem 0.75rem;
+    }
+
     .app-body h3 {
       font-family: "Shippori Mincho", serif;
       font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.03em;
       line-height: 1.35;
+    }
+
+    .app-status {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    .app-status-live {
+      color: var(--sea-deep);
+      background: rgba(20, 214, 113, 0.2);
+      border-color: rgba(47, 111, 126, 0.28);
+    }
+
+    .app-status-soon {
+      color: var(--ink-soft);
+      background: rgba(112, 147, 189, 0.2);
     }
 
     .app-body .desc {
@@ -373,7 +403,7 @@
 
     <section id="apps" aria-labelledby="apps-heading">
       <h2 id="apps-heading">iOSアプリ一覧</h2>
-      <p>現在公開中のiOSアプリです。アイコンからAppleストアページへ、各項目下のリンクからプライバシーポリシーへ移動できます。</p>
+      <p>公開中・近日リリース予定のiOSアプリです。アイコンからAppleストアページへ、各項目下のリンクからプライバシーポリシーへ移動できます。</p>
 
       <ul class="app-list">
         <li>
@@ -382,7 +412,10 @@
             <img src="./Warble/IconDefault.png" alt="Warble のアイコン" width="72" height="72" />
           </a>
           <div class="app-body">
-            <h3>Warble</h3>
+            <div class="app-title-row">
+              <h3>Warble</h3>
+              <span class="app-status app-status-soon">近日リリース</span>
+            </div>
             <p class="desc">Apple Music と連携し、機能を追加するミュージックアプリです。</p>
             <p class="app-links">
               <a href="./Warble/privacy_policy.html">プライバシーポリシー</a>
@@ -396,7 +429,10 @@
             <img src="./LRCMaker/IconDefault.png" alt="同期歌詞メーカー for Warble のアイコン" width="72" height="72" />
           </a>
           <div class="app-body">
-            <h3>同期歌詞メーカー for Warble</h3>
+            <div class="app-title-row">
+              <h3>同期歌詞メーカー for Warble</h3>
+              <span class="app-status app-status-soon">近日リリース</span>
+            </div>
             <p class="desc">楽曲に合わせて流れる同期歌詞を作成・編集できるアプリです。</p>
             <p class="app-links">
               <a href="./LRCMaker/privacy_policy.html">プライバシーポリシー</a>
@@ -409,7 +445,10 @@
             <img src="./ReadMaster/IconDefault.png" alt="ReadMaster のアイコン" width="72" height="72" />
           </a>
           <div class="app-body">
-            <h3>ReadMaster - 毎日の読書を管理</h3>
+            <div class="app-title-row">
+              <h3>ReadMaster - 毎日の読書を管理</h3>
+              <span class="app-status app-status-live">配信中</span>
+            </div>
             <p class="desc">読書習慣と読了記録をまとめて管理できるアプリです。</p>
             <p class="app-links">
               <a href="./ReadMaster/privacy_policy.html">プライバシーポリシー</a>
@@ -422,7 +461,10 @@
             <img src="./Unusual%20Knight%20Tour/IconDefault.png" alt="Unusual Knight Tour のアイコン" width="72" height="72" />
           </a>
           <div class="app-body">
-            <h3>Unusual Knight Tour - 戦略パズル</h3>
+            <div class="app-title-row">
+              <h3>Unusual Knight Tour - 戦略パズル</h3>
+              <span class="app-status app-status-live">配信中</span>
+            </div>
             <p class="desc">チェスの「ナイトツアーパズル」を題材にしたパズルゲームです。</p>
             <p class="app-links">
               <a href="./Unusual%20Knight%20Tour/privacy_policy.html">プライバシーポリシー</a>
