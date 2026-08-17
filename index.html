@@ -343,6 +343,41 @@
       border-bottom-color: var(--sea);
     }
 
+    .app-shots {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding: 0.15rem 0 0.35rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .app-shots::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .app-shots::-webkit-scrollbar-thumb {
+      background: rgba(31, 79, 90, 0.25);
+      border-radius: 3px;
+    }
+
+    .app-shots figure {
+      flex: 0 0 auto;
+      width: min(42vw, 148px);
+      margin: 0;
+      scroll-snap-align: start;
+    }
+
+    .app-shots img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(31, 79, 90, 0.12);
+      background: rgba(255, 255, 255, 0.55);
+    }
+
     footer {
       margin-top: 4rem;
       padding-top: 1.5rem;
@@ -435,6 +470,20 @@
             <p class="app-links">
               <a href="./Warble/privacy_policy.html">プライバシーポリシー</a>
             </p>
+          </div>
+          <div class="app-shots" aria-label="Warble のスクリーンショット">
+            <figure>
+              <img src="./Warble/screenshot/js/StoreScreenShot1.png" alt="Warble スクリーンショット 1" width="1284" height="2778" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="./Warble/screenshot/js/StoreScreenShot2.png" alt="Warble スクリーンショット 2" width="1284" height="2778" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="./Warble/screenshot/js/StoreScreenShot3.png" alt="Warble スクリーンショット 3" width="1284" height="2778" loading="lazy" />
+            </figure>
+            <figure>
+              <img src="./Warble/screenshot/js/StoreScreenShot4.png" alt="Warble スクリーンショット 4" width="1284" height="2778" loading="lazy" />
+            </figure>
           </div>
         </li>
 
